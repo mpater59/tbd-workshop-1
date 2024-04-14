@@ -33,8 +33,16 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 9. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
 
     ***describe one selected module and put the output of terraform graph for this module here***
+
+   Terraform graph for Vertex AI Workbench module:
+   ![terraform_graph_vertex_ai_workbench](https://github.com/mpater59/tbd-workshop-1/assets/32270817/8536ae46-7e11-426a-b34a-4748bc7bef91)
+
+   Vertex AI Workbench is Jupyter notebook-based development environment for the data science workflow. In this terraform module we can see that two buckets are created, one to store configuration data, while the other contains a shell script ("notebook_post_startup_script.sh") that is used to launch the 
+   appropriate images. Additionally, Terraform pulls a container image (default as "gcr.io/deeplearning-platform-release/base-cpu.py310:latest"), which is then run on an "e2-standard-2" machine. For our project, this machine is named as "tbd-2024l-303946-notebook" and we can use it to access Jupyter notebook.
+
+   With these machines running, you can: run BigQuery with Jupyter notebook; run PySpark applications; proccess data by running notebooks on Dataproc clusters.
    
-10. Reach YARN UI
+11. Reach YARN UI
    
    ***place the command you used for setting up the tunnel, the port and the screenshot of YARN UI here***
 
