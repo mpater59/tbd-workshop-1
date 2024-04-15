@@ -46,7 +46,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
    
    ***place the command you used for setting up the tunnel, the port and the screenshot of YARN UI here***
 
-   ***used command: gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-d" "tbd-cluster-m" -- -L 8088:localhost:8088***
+   used command: ***gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-d" "tbd-cluster-m" -- -L 8088:localhost:8088***
 
    In this case we needed to connect to the master node of the Dataproc cluster (named "tbd-cluster-m" in this project) and configure a tunnel for port 8088 to connect to the web UI.
 
@@ -96,11 +96,16 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 11. Create a BigQuery dataset and an external table using SQL
     
     ***place the code and output here***
+
+    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/b0f5b3d4-1314-42f6-8ed0-f95b70ba0f9f)
+
+
+    
    
     ***why does ORC not require a table schema?***
 
   
-12. Start an interactive session from Vertex AI workbench:
+13. Start an interactive session from Vertex AI workbench:
 
     ***place the screenshot of notebook here***
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/33863228-120a-4763-abb5-ac07145b806e)
@@ -110,7 +115,14 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 
     ***describe the cause and how to find the error***
 
-15. Additional tasks using Terraform:
+
+    Run spark-job.py with this command: ***gcloud dataproc jobs submit pyspark gs://tbd-2024l-303946-code/spark-job.py --cluster=tbd-cluster --region=europe-west1 --project "tbd-2024l-303946"***
+
+    Partial output:
+    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/53b1d7f5-f639-4f32-b00a-cd4cbd7db071)
+
+
+16. Additional tasks using Terraform:
 
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
