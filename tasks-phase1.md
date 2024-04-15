@@ -56,11 +56,34 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
    
 9. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
+
+        # TODO: ***place your diagram here***
+
     2. Description of the components of service accounts
+
+        - 611727548048-compute@developer.gserviceaccount.com - This SA manages connection between GitHub and Google Cloud service, it is responsible for distributing the access tokens.
+        - tbd-2024l-303946-data@tbd-2024l-303946.iam.gserviceaccount.com - This SA manages Cloud Composer environment, Dataproc clusters and jobs.
+        - tbd-2024l-303946-lab@tbd-2024l-303946.iam.gserviceaccount.com	- This SA is used for terraform activities, it allows for communication and management of the project infrastracture in Google Cloud form the terraform level. 
+
     3. List of buckets for disposal
+    
+        - tbd-2024l-303946-state - Bucket with saved terraform files
+        - tbd-2024l-303946-code - Bucket with saved code files for Apache Spark
+        - tbd-2024l-303946-conf - Bucket with saved "notebook_post_startup_script.sh" script
+        - tbd-2024l-303946-data - Bucket with saved data from data-pipelines
+    
     4. Description of network communication (ports, why it is necessary to specify the host for the driver) of Apache Spark running from Vertex AI Workbech
   
-    ***place your diagram here***
+        By default there are 4 VM defined that run on the same subnet ("subnet-01" - 10.10.10.0/24):
+        - JupyterLab Notebook VM - tbd-2024l-303946-notebook - 10.10.10.5
+        - Master - tbd-cluster-m - 10.10.10.3
+        - Worker 0 - tbd-cluster-w-0 - 10.10.10.4
+        - Worker 1 - tbd-cluster-w-1 - 10.10.10.2
+      
+        In Apache Spark it is necessary to specify the host for the driver beacuse it is responsible for executing main() functions and creating the SparkContext. This driver needs to communicate with the worker nodes to divide tasks between them and the master node in order to monitor the status of these nodes and their working status. 
+
+        In our project, driver is listing on port 30000 and block manager is listining on port 30001.
+  
 
 10. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
