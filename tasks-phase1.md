@@ -103,12 +103,14 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 12. Start an interactive session from Vertex AI workbench:
 
     ***place the screenshot of notebook here***
+    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/33863228-120a-4763-abb5-ac07145b806e)
+
    
-13. Find and correct the error in spark-job.py
+14. Find and correct the error in spark-job.py
 
     ***describe the cause and how to find the error***
 
-14. Additional tasks using Terraform:
+15. Additional tasks using Terraform:
 
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
