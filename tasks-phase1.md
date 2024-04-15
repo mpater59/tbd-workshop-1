@@ -46,10 +46,12 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
    
    ***place the command you used for setting up the tunnel, the port and the screenshot of YARN UI here***
 
-   ***used command: gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-b" "tbd-2024l-303946-notebook" -- -L 8080:localhost:8080***
+   ***used command: gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-d" "tbd-cluster-m" -- -L 8088:localhost:8088***
+
+   In this case we needed to connect to the master node of the Dataproc cluster (named "tbd-cluster-m" in this project) and configure a tunnel for port 8088 to connect to the web UI.
 
    ***Screenshot of YARN UI***
-   ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/38c16e0c-e2d7-49a0-9050-69a4e1a9fb09)
+   ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/5a3b9da8-4914-4902-9c97-303ffff159f8)
 
    
 11. Draw an architecture diagram (e.g. in draw.io) that includes:
