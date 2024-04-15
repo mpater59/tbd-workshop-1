@@ -12,15 +12,15 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
    - Aleksandra Harasimik-Buraczewska
    - Marcin Kurowski
    
-3. Follow all steps in README.md.
+2. Follow all steps in README.md.
 
-4. Select your project and set budget alerts on 5%, 25%, 50%, 80% of 50$ (in cloud console -> billing -> budget & alerts -> create buget; unclick discounts and promotions&others while creating budget).
+3. Select your project and set budget alerts on 5%, 25%, 50%, 80% of 50$ (in cloud console -> billing -> budget & alerts -> create buget; unclick discounts and promotions&others while creating budget).
 
   ![img.png](doc/figures/discounts.png)
 
 5. From avaialble Github Actions select and run destroy on main branch.
    
-7. Create new git branch and:
+6. Create new git branch and:
     1. Modify tasks-phase1.md file.
     
     2. Create PR from this branch to **YOUR** master and merge it to make new release. 
@@ -30,7 +30,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/0d857771-a820-49a0-acf0-63391c33bf7a)
 
 
-9. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
+7. Analyze terraform code. Play with terraform plan, terraform graph to investigate different modules.
 
     ***describe one selected module and put the output of terraform graph for this module here***
 
@@ -42,7 +42,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
    With these machines running, you can: run BigQuery with Jupyter notebook; run PySpark applications; proccess data by running notebooks on Dataproc clusters.
    
-11. Reach YARN UI
+8. Reach YARN UI
    
    ***place the command you used for setting up the tunnel, the port and the screenshot of YARN UI here***
 
@@ -54,7 +54,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/5a3b9da8-4914-4902-9c97-303ffff159f8)
 
    
-11. Draw an architecture diagram (e.g. in draw.io) that includes:
+9. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
     2. Description of the components of service accounts
     3. List of buckets for disposal
@@ -62,7 +62,7 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
   
     ***place your diagram here***
 
-12. Create a new PR and add costs by entering the expected consumption into Infracost
+10. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
 create a sample usage profiles and add it to the Infracost task in CI/CD pipeline. Usage file [example](https://github.com/infracost/infracost/blob/master/infracost-usage-example.yml) 
 
