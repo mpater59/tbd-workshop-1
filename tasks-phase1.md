@@ -59,6 +59,8 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 
        ![task9_1](https://github.com/mpater59/tbd-workshop-1/assets/32270817/0fc5ae98-3caa-436d-942d-1cb683c20c3a)
 
+       There are 2 subnets in our project. The first one (subnet-01) is used to ensure connectivity between nodes for Dataproc and Vertex AI Notebook. The second subnet (composer-subnet-01) is used by Cloud Composer.
+
     2. Description of the components of service accounts
 
         - 611727548048-compute@developer.gserviceaccount.com (iac) - This SA manages connection between GitHub and Google Cloud service, it is responsible for distributing the access tokens.
