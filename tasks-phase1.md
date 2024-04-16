@@ -97,7 +97,66 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 
    ***place the expected consumption you entered here***
 
+  Added infracost-usage: [infracost-usage.yml](infracost-usage.yml)
+
+   ```yaml
+  version: 0.1
+  resource_usage:
+    google_artifact_registry_repository:
+      storage_gb: 50 # Total data stored in the repository in GB
+      monthly_egress_data_transfer_gb: # Monthly data delivered from the artifact registry repository in GB. You can specify any number of Google Cloud regions below, replacing - for _ e.g.:
+        europe_west3: 20 # GB of data delivered from the artifact registry to europe-west3.
+    google_storage_bucket:
+      storage_gb: 500 # Total size of bucket in GB.
+      monthly_class_a_operations: 1000000 # Monthly number of class A operations (object adds, bucket/object list).
+      monthly_class_b_operations: 12500000 # Monthly number of class B operations (object gets, retrieve bucket/object metadata).
+      monthly_data_retrieval_gb: 250 # Monthly amount of data retrieved in GB.
+      monthly_egress_data_transfer_gb: # Monthly data transfer from Cloud Storage to the following, in GB:
+        same_continent: 200 # Same continent.
+        worldwide: 0 # Worldwide excluding Asia, Australia.
+        asia: 0 # Asia excluding China, but including Hong Kong.
+        china: 0 # China excluding Hong Kong.
+        australia: 0 # Australia.
+    google_service_networking_connection:
+      monthly_egress_data_transfer_gb: # Monthly VM-VM data transfer from VPN gateway to the following, in GB:
+        same_region: 100 # VMs in the same Google Cloud region.
+        us_or_canada: 0 # From a Google Cloud region in the US or Canada to another Google Cloud region in the US or Canada.
+        europe: 100 # Between Google Cloud regions within Europe.
+        asia: 0 # Between Google Cloud regions within Asia.
+        south_america: 0 # Between Google Cloud regions within South America.
+        oceania: 0 # Indonesia and Oceania to/from any Google Cloud region.
+        worldwide: 100 # to a Google Cloud region on another continent.
+  ```
+
+  Modified pull request workflow: [.github/workflows/pull-request.yml](.github/workflows/pull-request.yml)
+
+  ```diff
+      - name: Generate Infracost cost estimate baseline
+        run: |
+          infracost breakdown --path="." \
+                              --format=json \
+                              --out-file=/tmp/infracost-base.json \
++++                           --usage-file infracost-usage.yml
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+      - name: Generate Infracost diff
+        run: |
+          infracost diff --path="." \
+                          --format=json \
+                          --compare-to=/tmp/infracost-base.json \
+                          --out-file=/tmp/infracost.json \
++++                       --usage-file infracost-usage.yml
+      - name: Post Infracost comment
+  ```
+
+   Disclaimer: The expected consumption that we entered was set arbitrarily, therefore the obtained costs of infrastracture consumption may be incorrect.
+
    ***place the screenshot from infracost output here***
+
+   ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/9a9ba20a-0f34-4a72-abba-803b718e257e)
+
+   ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/251bd5aa-e65e-49e5-a872-28ba1351e31c)
+
 
 11. Create a BigQuery dataset and an external table using SQL
     
