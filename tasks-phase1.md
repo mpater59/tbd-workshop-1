@@ -99,7 +99,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/b0f5b3d4-1314-42f6-8ed0-f95b70ba0f9f)
 
-    code:
+    Code:
     ```sql
     CREATE SCHEMA IF NOT EXISTS demo OPTIONS(location = 'europe-west1');
 
@@ -115,10 +115,11 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     Disclamer: We used this code from README.md (with the bucket name changed) but before we could use it we first had to run fixed spark-job.py from task 13. Running this job allowed to save the appropriate data in .orc format to our bucket, which allowed us to execute the above BigQuery.
    
     ***why does ORC not require a table schema?***
+
     ORC files doesn't require a table schema because they contain metadata within the file itself. They can contain information about the table schema that BigQuery can read.
 
   
-12. Start an interactive session from Vertex AI workbench:
+13. Start an interactive session from Vertex AI workbench:
 
     ***place the screenshot of notebook here***
     Used command: ***gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-d" "tbd-cluster-m" -- -L 8080:localhost:8080***
@@ -126,7 +127,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/33863228-120a-4763-abb5-ac07145b806e)
 
    
-13. Find and correct the error in spark-job.py
+14. Find and correct the error in spark-job.py
 
     ***describe the cause and how to find the error***
 
@@ -148,7 +149,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/53b1d7f5-f639-4f32-b00a-cd4cbd7db071)
 
 
-14. Additional tasks using Terraform:
+15. Additional tasks using Terraform:
 
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
