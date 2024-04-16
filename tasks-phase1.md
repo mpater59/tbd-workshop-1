@@ -112,7 +112,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     
     SELECT * FROM demo.shakespeare ORDER BY sum_word_count DESC LIMIT 5;
     ```
-    Disclamer: We used this code from README.md (with the bucket name changed) but before we could use it we first had to run fixed spark-job.py from task 13. Running this job allowed to save the appropriate data in .orc format to our bucket, which allowed us to execute the above BigQuery.
+    Disclaimer: We used this code from README.md (with the bucket name changed) but before we could use it we first had to run fixed spark-job.py from task 13. Running this job allowed to save the appropriate data in .orc format to our bucket, which allowed us to execute the above BigQuery.
    
     ***why does ORC not require a table schema?***
 
