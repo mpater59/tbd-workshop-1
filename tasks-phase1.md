@@ -118,25 +118,37 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     ORC files doesn't require a table schema because they contain metadata within the file itself. They can contain information about the table schema that BigQuery can read.
 
   
-13. Start an interactive session from Vertex AI workbench:
+12. Start an interactive session from Vertex AI workbench:
 
     ***place the screenshot of notebook here***
+    Used command: ***gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-d" "tbd-cluster-m" -- -L 8080:localhost:8080***
+    
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/33863228-120a-4763-abb5-ac07145b806e)
 
    
-14. Find and correct the error in spark-job.py
+13. Find and correct the error in spark-job.py
 
     ***describe the cause and how to find the error***
+
+    Modified file: [modules/data-pipeline/resources/spark-job.py](modules/data-pipeline/resources/spark-job.py)
+
+    ```diff
+    # change to your data bucket
+    --- DATA_BUCKET = "gs://tbd-2024l-9910-data/data/shakespeare/"
+    +++ DATA_BUCKET = "gs://tbd-2024l-303946-data/data/shakespeare/"
     
+    spark = SparkSession.builder.appName('Shakespeare WordCount').getOrCreate()
+    ```
 
-
-    Run spark-job.py with this command: ***gcloud dataproc jobs submit pyspark gs://tbd-2024l-303946-code/spark-job.py --cluster=tbd-cluster --region=europe-west1 --project "tbd-2024l-303946"***
+    In this case, the error was that the spark-job.py file contained the wrong name of the bucket to which the data was to be saved after the job was completed.
+    
+    Used command to execute spark-job.py: ***gcloud dataproc jobs submit pyspark gs://tbd-2024l-303946-code/spark-job.py --cluster=tbd-cluster --region=europe-west1 --project "tbd-2024l-303946"***
 
     Partial output:
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/53b1d7f5-f639-4f32-b00a-cd4cbd7db071)
 
 
-16. Additional tasks using Terraform:
+14. Additional tasks using Terraform:
 
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
