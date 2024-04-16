@@ -136,7 +136,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
           infracost breakdown --path="." \
                               --format=json \
                               --out-file=/tmp/infracost-base.json \
-+++                           --usage-file infracost-usage.yml
++                             --usage-file infracost-usage.yml
       - name: Checkout PR branch
         uses: actions/checkout@v3
       - name: Generate Infracost diff
@@ -145,7 +145,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
                           --format=json \
                           --compare-to=/tmp/infracost-base.json \
                           --out-file=/tmp/infracost.json \
-+++                       --usage-file infracost-usage.yml
++                         --usage-file infracost-usage.yml
       - name: Post Infracost comment
   ```
 
@@ -219,14 +219,44 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
     ***place the link to the modified file and inserted terraform code***
+
+    Modified files:
+
+    [main.tf](main.tf)
+
+    [modules/dataproc/main.tf](modules/dataproc/main.tf)
+
+    [modules/dataproc/variables.tf](modules/dataproc/variables.tf)
+
+    [modules/vertex-ai-workbench/main.tf](modules/vertex-ai-workbench/main.tf)
+
+    [modules/vertex-ai-workbench/variables.tf](modules/vertex-ai-workbench/variables.tf)
+
+    Modified code: [Commit task 14.1](https://github.com/bdg-tbd/tbd-workshop-1/commit/59abfa53849eee3e9af6e682053d93c9243919b8)
     
-    3. Add support for preemptible/spot instances in a Dataproc cluster
+    2. Add support for preemptible/spot instances in a Dataproc cluster
 
     ***place the link to the modified file and inserted terraform code***
+
+    Modified files:
+
+    [main.tf](main.tf)
+
+    [modules/dataproc/main.tf](modules/dataproc/main.tf)
+
+    [modules/dataproc/variables.tf](modules/dataproc/variables.tf)
+
+    Modified code: [Commit task 14.2](https://github.com/bdg-tbd/tbd-workshop-1/commit/5dc341f890d6892548a5eb021db34dfd4320b42b)
     
     3. Perform additional hardening of Jupyterlab environment, i.e. disable sudo access and enable secure boot
     
     ***place the link to the modified file and inserted terraform code***
+
+    Modified files:
+    
+    [modules/vertex-ai-workbench/main.tf](modules/vertex-ai-workbench/main.tf)
+
+    Modified code: [Commit task 14.3](https://github.com/bdg-tbd/tbd-workshop-1/commit/9534cb7e285b88e3fb06318ebc585e641e04dd2b)
 
     4. (Optional) Get access to Apache Spark WebUI
 
