@@ -99,10 +99,23 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/b0f5b3d4-1314-42f6-8ed0-f95b70ba0f9f)
 
+    code:
+    ```sql
+    CREATE SCHEMA IF NOT EXISTS demo OPTIONS(location = 'europe-west1');
 
+    CREATE OR REPLACE EXTERNAL TABLE demo.shakespeare
+      OPTIONS (
+      
+      format = 'ORC',
+      uris = ['gs://tbd-2024l-303946-data/data/shakespeare/*.orc']);
     
+    
+    SELECT * FROM demo.shakespeare ORDER BY sum_word_count DESC LIMIT 5;
+    ```
+    Disclamer: We used this code from README.md (with the bucket name changed) but before we could use it we first had to run fixed spark-job.py from task 13. Running this job allowed to save the appropriate data in .orc format to our bucket, which allowed us to execute the above BigQuery.
    
     ***why does ORC not require a table schema?***
+    ORC files doesn't require a table schema because they contain metadata within the file itself. They can contain information about the table schema that BigQuery can read.
 
   
 13. Start an interactive session from Vertex AI workbench:
@@ -114,6 +127,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
 14. Find and correct the error in spark-job.py
 
     ***describe the cause and how to find the error***
+    
 
 
     Run spark-job.py with this command: ***gcloud dataproc jobs submit pyspark gs://tbd-2024l-303946-code/spark-job.py --cluster=tbd-cluster --region=europe-west1 --project "tbd-2024l-303946"***
