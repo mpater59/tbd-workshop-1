@@ -57,13 +57,13 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
 9. Draw an architecture diagram (e.g. in draw.io) that includes:
     1. VPC topology with service assignment to subnets
 
-        # TODO: ***place your diagram here***
+       ![task9_1](https://github.com/mpater59/tbd-workshop-1/assets/32270817/0fc5ae98-3caa-436d-942d-1cb683c20c3a)
 
     2. Description of the components of service accounts
 
-        - 611727548048-compute@developer.gserviceaccount.com - This SA manages connection between GitHub and Google Cloud service, it is responsible for distributing the access tokens.
-        - tbd-2024l-303946-data@tbd-2024l-303946.iam.gserviceaccount.com - This SA manages Cloud Composer environment, Dataproc clusters and jobs.
-        - tbd-2024l-303946-lab@tbd-2024l-303946.iam.gserviceaccount.com	- This SA is used for terraform activities, it allows for communication and management of the project infrastracture in Google Cloud form the terraform level. 
+        - 611727548048-compute@developer.gserviceaccount.com (iac) - This SA manages connection between GitHub and Google Cloud service, it is responsible for distributing the access tokens.
+        - tbd-2024l-303946-data@tbd-2024l-303946.iam.gserviceaccount.com (tbd-composer-sa) - This SA manages Cloud Composer environment, Dataproc clusters and jobs.
+        - tbd-2024l-303946-lab@tbd-2024l-303946.iam.gserviceaccount.com (tbd-terraform)	- This SA is used for terraform activities, it allows for communication and management of the project infrastracture in Google Cloud form the terraform level. 
 
     3. List of buckets for disposal
     
@@ -83,7 +83,11 @@ IMPORTANT ❗ ❗ ❗ Please remember to destroy all the resources after each wo
         In Apache Spark it is necessary to specify the host for the driver beacuse it is responsible for executing main() functions and creating the SparkContext. This driver needs to communicate with the worker nodes to divide tasks between them and the master node in order to monitor the status of these nodes and their working status. 
 
         In our project, driver is listing on port 30000 and block manager is listining on port 30001.
-  
+
+       Topology of Apache Spark Cluster:
+       
+       ![task9_2](https://github.com/mpater59/tbd-workshop-1/assets/32270817/666e0291-13f0-4bb7-bad8-fffa972d7c9e)
+
 
 10. Create a new PR and add costs by entering the expected consumption into Infracost
 For all the resources of type: `google_artifact_registry`, `google_storage_bucket`, `google_service_networking_connection`
@@ -119,7 +123,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     ORC files doesn't require a table schema because they contain metadata within the file itself. They can contain information about the table schema that BigQuery can read.
 
   
-13. Start an interactive session from Vertex AI workbench:
+12. Start an interactive session from Vertex AI workbench:
 
     ***place the screenshot of notebook here***
     Used command: ***gcloud compute --project "tbd-2024l-303946" ssh --zone "europe-west1-d" "tbd-cluster-m" -- -L 8080:localhost:8080***
@@ -127,7 +131,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/33863228-120a-4763-abb5-ac07145b806e)
 
    
-14. Find and correct the error in spark-job.py
+13. Find and correct the error in spark-job.py
 
     ***describe the cause and how to find the error***
 
@@ -149,7 +153,7 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/53b1d7f5-f639-4f32-b00a-cd4cbd7db071)
 
 
-15. Additional tasks using Terraform:
+14. Additional tasks using Terraform:
 
     1. Add support for arbitrary machine types and worker nodes for a Dataproc cluster and JupyterLab instance
 
