@@ -69,6 +69,8 @@ module "dataproc" {
   worker_nodes_number = 2
   machine_type_master = "e2-standard-2"
   machine_type_worker = "e2-standard-2"
+  preemptible_num_instances = 2
+  preemptibility = "SPOT"
 }
 
 ## Uncomment for Dataproc batches (serverless)
