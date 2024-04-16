@@ -59,6 +59,11 @@ jobs:
 
     - name: Terraform fmt
       id: fmt
+      run: terraform fmt
+      continue-on-error: false
+
+    - name: Terraform fmt -check
+      id: fmt
       run: terraform fmt -check
       continue-on-error: false
 
