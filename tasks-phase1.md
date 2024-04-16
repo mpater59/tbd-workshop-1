@@ -233,6 +233,8 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     [modules/vertex-ai-workbench/variables.tf](modules/vertex-ai-workbench/variables.tf)
 
     Modified code: [Commit task 14.1](https://github.com/bdg-tbd/tbd-workshop-1/commit/59abfa53849eee3e9af6e682053d93c9243919b8)
+
+    Disclaimer: We've also added the ability to manually set the number of worker node instances, all these changes can be made by editing the appropriate lines in the main.tf file. Another option would be to introduce additional variables in the variables.tf file and set the appropriate default values.
     
     2. Add support for preemptible/spot instances in a Dataproc cluster
 
