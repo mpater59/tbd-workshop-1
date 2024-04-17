@@ -263,3 +263,24 @@ create a sample usage profiles and add it to the Infracost task in CI/CD pipelin
     4. (Optional) Get access to Apache Spark WebUI
 
     ***place the link to the modified file and inserted terraform code***
+    
+    Modified files:
+    
+    [main.tf](main.tf)
+    
+    [modules/dataproc/main.tf](modules/dataproc/main.tf)
+
+    Modified code:
+
+    [Commit: Dataproc - enabled http port access](https://github.com/bdg-tbd/tbd-workshop-1/commit/903acc25c1b42b671c5a1e47f7fbef4ae38d3198)
+    
+    [Commit: Enabled google-beta](https://github.com/bdg-tbd/tbd-workshop-1/commit/7628b192de46c9cae441b3ef988a4110eead2c00)
+
+    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/0bfd9973-7411-485a-8f33-5d8dafdcaad8)
+
+    For this task, we wanted to use the HTTP address that is provided when running spark-shell on the master node. For this reason, we enabled http port access in the Dataproc terraform module (which additionally required the use of google-beta provider:  https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/dataproc_cluster#nested_endpoint_config). Unfortunately, we still couldn't access Apache Spark Web UI externally.
+
+    ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/44992687-c5dd-462c-911d-7c5d33110ed7)
+
+    
+    
