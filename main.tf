@@ -1,3 +1,7 @@
+provider "google-beta" {
+  project = var.project_name
+}
+
 locals {
   main_subnet_address     = "10.10.10.0/24"
   notebook_vpc_name       = "main-vpc"

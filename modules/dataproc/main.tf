@@ -1,7 +1,3 @@
-provider "google-beta" {
-  project = var.project_name
-}
-
 resource "google_project_service" "dataproc" {
   provider           = google
   service            = "dataproc.googleapis.com"
