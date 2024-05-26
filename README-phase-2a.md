@@ -18,9 +18,13 @@ Worth to read:
 
 2. Authors:
 
-   ***Enter your group nr***
+   ***enter your group nr: 4***
 
-   ***Link to forked repo***
+   ***link to forked repo: https://github.com/mpater59/tbd-workshop-1***
+
+   - Mikołaj Pater
+   - Aleksandra Harasimik-Buraczewska
+   - Marcin Kurowski
 
 3. Sync your repo with https://github.com/bdg-tbd/tbd-workshop-1.
 
