@@ -1,6 +1,6 @@
-provider "google-beta" {
-  project = var.project_name
-}
+#provider "google-beta" {
+#  project = var.project_name
+#}
 
 locals {
   main_subnet_address     = "10.10.10.0/24"
