@@ -83,6 +83,17 @@ the running instance of your Vertex AI Workbench
 
    ***Files desccription***
 
+Po wygenerowaniu zbioru danych w folderze /tmp/tpc-di pojawiły się następujące pliki:
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/14808292-59fb-4d71-867b-c847105181dd)
+
+Rozmiary podfolderów:
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/31e00ac6-8a6a-4468-8b73-2ad58d6db4ae)
+
+Najważniejszymi plikami jakie powstały po wygenerowaniu zbioru danych to były pliki .csv oraz .txt. Powstały przy tym 3 foldery: Batch1, Batch2 oraz Batch3. W folderze Batch1 znajdują głównie pliki tekstowe .txt (lub bez żadnego formatu) oraz odpowiadające im pliki z końcówką i rozszerzeniem _audit.csv. Te pierwsze pliki zajmują najwięcej miejsca i w nich są przechowywane dane z bazy danych, natomiast te pliki .csv zawierają informacje na temat kolumn dla każdego z rekordu z bazy danych. W folderach Batch2 i Batch3 jest to samo, jedynie przechowywane tam dane są o wiele mniejszego rozmiaru.
+
+
 8. Analyze tpcdi.py. What happened in the loading stage?
 
    ***Your answer***
