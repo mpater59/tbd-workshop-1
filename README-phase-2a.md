@@ -98,6 +98,15 @@ Najważniejszymi plikami jakie powstały po wygenerowaniu zbioru danych to były
 
    ***Your answer***
 
+Skrypt tpcdi.py był odpowiedzialny za zapisanie danych lokalnie w /tmp/tpc-di/Batch1 w naszym projektowym kubełku tbd-2024l-303946-data.
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/671562b8-480b-43bc-bc23-35aa89ecb6a5)
+
+Dodatkowo, przy pomocy plików .csv te wszystkie dane zostały zapisane w Spark DataFrame (funkcja save_df()). Przy ich pomocy zostały utworzone poniższe tabele:
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/b7626e8b-9319-43dd-98cf-e7b43d2321e1)
+
+
 9. Using SparkSQL answer: how many table were created in each layer?
 
    ***SparkSQL command and output***
