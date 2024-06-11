@@ -141,6 +141,51 @@ Rezultat:
 
    ***Code and description of your tests***
 
+1. Test (dim_customer__unique_customer.sql) - Sprawdzanie czy wszyscy klienci w tabeli 'dim_customer' są unikalni.
+
+```sql
+select
+    sk_customer_id,
+    count(*) cnt
+from {{ ref('dim_customer') }}
+group by sk_customer_id
+having cnt > 1
+```
+
+2. Test (fact_cash_transactions__unique_cash_transaction.sql) - Sprawdzanie czy wszystkie transakcje w tabeli 'fact_cash_transactions' są unikalne.
+
+```sql
+select
+    sk_customer_id,
+    sk_account_id,
+    sk_transaction_date,
+    transaction_timestamp,
+    description,
+    count(*) cnt
+from {{ ref('fact_cash_transactions') }}
+group by sk_customer_id, sk_account_id, sk_transaction_date, transaction_timestamp, description
+having cnt > 1
+```
+
+3. Test (fact_cash_transactions__null_amount.sql) - Sprawdzanie czy wszystkie transakcje w tabeli 'fact_cash_transactions' mają przypisaną jakąś wartość dla kolumny 'amount'.
+
+```sql
+select
+    sk_customer_id,
+    sk_account_id,
+    sk_transaction_date,
+    count(*) cnt
+from {{ ref('fact_cash_transactions') }}
+where amount is null
+group by sk_customer_id, sk_account_id, sk_transaction_date
+having cnt > 0
+```
+
+Po dodaniu ich do naszego repozytorium, sprawdzono czy te testy wykonują się poprawnie:
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/aee9acb3-87f3-4026-9d5b-6ff89e250f31)
+
+
 11. In main.tf update
    ```
    dbt_git_repo            = "https://github.com/mwiewior/tbd-tpc-di.git"
