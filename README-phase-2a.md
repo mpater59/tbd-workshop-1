@@ -93,23 +93,49 @@ Rozmiary podfolderów:
 
 Najważniejszymi plikami jakie powstały po wygenerowaniu zbioru danych to były pliki .csv oraz .txt. Powstały przy tym 3 foldery: Batch1, Batch2 oraz Batch3. W folderze Batch1 znajdują głównie pliki tekstowe .txt (lub bez żadnego formatu) oraz odpowiadające im pliki z końcówką i rozszerzeniem _audit.csv. Te pierwsze pliki zajmują najwięcej miejsca i w nich są przechowywane dane z bazy danych, natomiast te pliki .csv zawierają informacje na temat kolumn dla każdego z rekordu z bazy danych. W folderach Batch2 i Batch3 jest to samo, jedynie przechowywane tam dane są o wiele mniejszego rozmiaru.
 
+Dodatkowo po wykonaniu tego kroku został wygenerowany raport:
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/509257c3-10ef-4741-891f-fd906851795a)
+
 
 8. Analyze tpcdi.py. What happened in the loading stage?
 
    ***Your answer***
 
-Skrypt tpcdi.py był odpowiedzialny za zapisanie danych lokalnie w /tmp/tpc-di/Batch1 w naszym projektowym kubełku tbd-2024l-303946-data.
+Skrypt tpcdi.py był odpowiedzialny za zapisanie danych lokalnie w /tmp/tpc-di/Batch1 w naszym projektowym kubełku tbd-2024l-303946-data (funkcja upload_files() oraz get_stage_path(), która zwracała ścieżkę do pliku w kubełku).
 
 ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/671562b8-480b-43bc-bc23-35aa89ecb6a5)
 
-Dodatkowo, przy pomocy plików .csv te wszystkie dane zostały zapisane w Spark DataFrame (funkcja save_df()). Przy ich pomocy zostały utworzone poniższe tabele:
+Dodatkowo, przy pomocy plików .csv te wszystkie dane zostały zapisane w Spark DataFrame (funkcja load_csv() oraz save_df()). Ostatecznie zostały utworzone poniższe tabele:
 
 ![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/b7626e8b-9319-43dd-98cf-e7b43d2321e1)
-
 
 9. Using SparkSQL answer: how many table were created in each layer?
 
    ***SparkSQL command and output***
+
+Wykorzystany kod:
+
+```python
+databases = []
+result = {}
+for value in spark.sql("show databases").collect():
+    databases.append(value.namespace)
+
+for database in databases:
+    spark.sql(f"use {database}")
+    tables = spark.sql("show tables")
+    result[database] = tables.count()
+
+for key, value in result.items():
+    print(f"Layer {key} - Number of tables: {value}")
+```
+
+Rezultat:
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/45492d12-d2c7-4dd9-bf89-eb2cbd64cd41)
+
+
 
 10. Add some 3 more [dbt tests](https://docs.getdbt.com/docs/build/tests) and explain what you are testing. ***Add new tests to your repository.***
 
