@@ -29,5 +29,23 @@ in profiles.yml.
 
 5. Analyze the performance and scalability of execution times of each model. Visualize and discucss the final results.
 
+Wykonano 3 testy dla 1, 2 oraz 5 instancji egzekutorów. W trakcie przetwarzania modeli tabel przez Spark'a, zauważono w YARN'ie, że zmieniała się liczba uruchomionych kontenerów oraz wykorzystywanych vCPU. Dla testu z uruchomioną 1 instancją egzekutora były wykorzystywane 2 kontenery oraz 2 vCPU. Dla testu z uruchomionymi 2 instancjami egzekutora były wykorzystywane 3 kontenery oraz 3 vCPU. Dla testu z uruchomionymi 5 instancjami egzekutora były wykorzystywane 6 kontenerów oraz 6 vCPU.
+
+Następnie zapisano wszystkie wyniki do następujących plików tekstowych: #TODO
+
+Na ich podstawie przygotowano arkusz Excel (#ścieżka do pliku), w którym zapisano wszystkie wyniki i stworzone odpowiednie wykresy, które znajdują się poniżej:
+
+Zapis uzyskany wyników w tabeli:
+
+#TODO
+
+Wykres przedstawiający łączny czas przetwarzania dla poszczególnego testu z różną liczbą uruchomionych instancji egzekutora:
+
+#TODO
+
+Wykres przedstawiający czasy przetwarzania dla poszczególnego modelu tabeli w zależności od liczby uruchomionych instancji egzekutora:
+
+#TODO
+
 
    
