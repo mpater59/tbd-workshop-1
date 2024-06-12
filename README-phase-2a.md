@@ -196,3 +196,6 @@ Po dodaniu ich do naszego repozytorium, sprawdzono czy te testy wykonują się p
 12. Redeploy infrastructure and check if the DAG finished with no errors:
 
 ***The screenshot of Apache Aiflow UI***
+
+![image](https://github.com/mpater59/tbd-workshop-1/assets/32270817/b54871eb-998c-4077-87fd-a61950bd2820)
+
